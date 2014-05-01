@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 				<span class="sup large">4</span>
 				<span class="sub large">&#11014;</span>
 			</div>
-			<div class="key key-midbump" data-key="101">
+			<div class="key key-bump key-midbump" data-key="101">
 				<span class="sup large">5</span>
 			</div>
 			<div class="key" data-key="102">
@@ -673,9 +673,26 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 	display: none;
 }
 
+.key-bump:after {
+	display: block;
+	content: '';
+	width: 5px;
+	height: 1px;
+	margin: 10px 12.5px 0;
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
 .pressing {
 	color: #079;
 	background: rgba(0, 153, 204, 0.1);
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+.key-bump.pressing:after {
 	box-shadow:
 		0 0 0 1px #09c,
 		0 2px 0 0 rgba(0, 153, 204, 0.3);
