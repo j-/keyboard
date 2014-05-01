@@ -481,18 +481,18 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 
 		</div>
 		<div class="row row-3">
-			<div class="key key-up" data-key="38">
+			<div class="key key-arrow key-up" data-key="38">
 				<span class="sup">&#9650;</span>
 			</div>
 		</div>
 		<div class="row row-4">
-			<div class="key key-left" data-key="37">
+			<div class="key key-arrow key-left" data-key="37">
 				<span class="sup">&#9664;</span>
 			</div>
-			<div class="key key-down" data-key="40">
+			<div class="key key-arrow key-down" data-key="40">
 				<span class="sup">&#9660;</span>
 			</div>
-			<div class="key key-right" data-key="39">
+			<div class="key key-arrow key-right" data-key="39">
 				<span class="sup">&#9654;</span>
 			</div>
 		</div>
@@ -513,15 +513,15 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 			</div>
 		</div>
 		<div class="row row-1">
-			<div class="key" data-key="103">
+			<div class="key key-num7" data-key="103">
 				<span class="sup large">7</span>
 				<span class="sub small">Home</span>
 			</div>
-			<div class="key" data-key="104">
+			<div class="key key-num8" data-key="104">
 				<span class="sup large">8</span>
-				<span class="sub large">&#11014;</span>
+				<span class="sub large">&#xe214;</span>
 			</div>
-			<div class="key" data-key="105">
+			<div class="key key-num9" data-key="105">
 				<span class="sup large">9</span>
 				<span class="sub small">PgUp</span>
 			</div>
@@ -530,28 +530,28 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 			</div>
 		</div>
 		<div class="row row-2">
-			<div class="key" data-key="100">
+			<div class="key key-num4" data-key="100">
 				<span class="sup large">4</span>
-				<span class="sub large">&#11014;</span>
+				<span class="sub large">&#xe211;</span>
 			</div>
-			<div class="key key-bump key-midbump" data-key="101">
+			<div class="key key-num5 key-bump key-midbump" data-key="101">
 				<span class="sup large">5</span>
 			</div>
-			<div class="key" data-key="102">
+			<div class="key key-num6" data-key="102">
 				<span class="sup large">6</span>
-				<span class="sub large">&#11015;</span>
+				<span class="sub large">&#xe212;</span>
 			</div>
 		</div>
 		<div class="row row-3">
-			<div class="key" data-key="97">
+			<div class="key key-num1" data-key="97">
 				<span class="sup large">1</span>
 				<span class="sub small">End</span>
 			</div>
-			<div class="key" data-key="98">
+			<div class="key key-num2" data-key="98">
 				<span class="sup large">2</span>
-				<span class="sub large">&#11015;</span>
+				<span class="sub large">&#xe213;</span>
 			</div>
-			<div class="key" data-key="99">
+			<div class="key key-num3" data-key="99">
 				<span class="sup large">3</span>
 				<span class="sub small">PgDn</span>
 			</div>
@@ -658,12 +658,11 @@ document.addEventListener('DOMContentLoaded', bindLockButton);
 	margin-top: 20px;
 }
 
-.key[data-key="100"] .sub {
-	transform: rotate(-90deg);
-}
-
-.key[data-key="102"] .sub {
-	transform: rotate(-90deg);
+.key-num8 .sub,
+.key-num4 .sub,
+.key-num6 .sub,
+.key-num2 .sub {
+	font-family: 'glyphicons';
 }
 
 .key-calc,
