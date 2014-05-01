@@ -1,0 +1,420 @@
+<script>
+(function () {
+
+/*
+
+The keyCode value differs between the different keyboard events. The above table is mapped for keydown and keyup. For keypress, you need only use String.fromCharCode(event.which). This will return the true input value - e.g. shift, caps lock, etc. Hope this clarifies for future readers.
+
+http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes#comment-1077577632
+
+*/
+
+var keys = [
+	[  8, 'backspace'],
+	[  9, 'tab'],
+	[ 12, 'clear'],
+	[ 13, 'enter'],
+	[ 16, 'shift'],
+	[ 17, 'ctrl'],
+	[ 18, 'alt'],
+	[ 19, 'pause/break'],
+	[ 20, 'caps lock'],
+	[ 27, 'escape'],
+	[ 32, 'space'],
+	[ 33, 'page up'],
+	[ 34, 'page down'],
+	[ 35, 'end'],
+	[ 36, 'home'],
+	[ 37, 'left arrow'],
+	[ 38, 'up arrow'],
+	[ 39, 'right arrow'],
+	[ 40, 'down arrow'],
+	[ 44, 'print screen'],
+	[ 45, 'insert'],
+	[ 46, 'delete'],
+	[ 48, '0'],
+	[ 49, '1'],
+	[ 50, '2'],
+	[ 51, '3'],
+	[ 52, '4'],
+	[ 53, '5'],
+	[ 54, '6'],
+	[ 55, '7'],
+	[ 56, '8'],
+	[ 57, '9'],
+	[ 65, 'a'],
+	[ 66, 'b'],
+	[ 67, 'c'],
+	[ 68, 'd'],
+	[ 69, 'e'],
+	[ 70, 'f'],
+	[ 71, 'g'],
+	[ 72, 'h'],
+	[ 73, 'i'],
+	[ 74, 'j'],
+	[ 75, 'k'],
+	[ 76, 'l'],
+	[ 77, 'm'],
+	[ 78, 'n'],
+	[ 79, 'o'],
+	[ 80, 'p'],
+	[ 81, 'q'],
+	[ 82, 'r'],
+	[ 83, 's'],
+	[ 84, 't'],
+	[ 85, 'u'],
+	[ 86, 'v'],
+	[ 87, 'w'],
+	[ 88, 'x'],
+	[ 89, 'y'],
+	[ 90, 'z'],
+	[ 91, 'left window key'],
+	[ 92, 'right window key'],
+	[ 93, 'menu'],
+	[ 96, 'numpad 0'],
+	[ 97, 'numpad 1'],
+	[ 98, 'numpad 2'],
+	[ 99, 'numpad 3'],
+	[100, 'numpad 4'],
+	[101, 'numpad 5'],
+	[102, 'numpad 6'],
+	[103, 'numpad 7'],
+	[104, 'numpad 8'],
+	[105, 'numpad 9'],
+	[106, 'multiply'],
+	[107, 'add'],
+	[109, 'subtract'],
+	[110, 'decimal point'],
+	[111, 'divide'],
+	[112, 'f1'],
+	[113, 'f2'],
+	[114, 'f3'],
+	[115, 'f4'],
+	[116, 'f5'],
+	[117, 'f6'],
+	[118, 'f7'],
+	[119, 'f8'],
+	[120, 'f9'],
+	[121, 'f10'],
+	[122, 'f11'],
+	[123, 'f12'],
+	[144, 'num lock'],
+	[145, 'scroll lock'],
+	[172, 'browser home'],
+	[173, 'mute'],
+	[174, 'volume down'],
+	[175, 'volume up'],
+	[180, 'mail'],
+	[182, 'my computer'],
+	[183, 'calculator'],
+	[186, 'semi-colon'],
+	[187, 'equal sign'],
+	[188, 'comma'],
+	[189, 'dash'],
+	[190, 'period'],
+	[191, 'forward slash'],
+	[192, 'grave accent'],
+	[219, 'open bracket'],
+	[220, 'back slash'],
+	[221, 'close braket'],
+	[222, 'single quote']
+];
+
+var getKeyNameByCode = function (code) {
+	for (var i = 0; i < keys.length; i++) {
+		if (keys[i][0] === code) {
+			return keys[i][1];
+		}
+	}
+	return null;
+};
+
+window.addEventListener('keydown', function (e) {
+	var which = e.which;
+	console.log(which, getKeyNameByCode(which), e);
+});
+
+var showKeyPress = function (key) {
+	key.classList.add('pressing');
+};
+
+var showKeyRelease = function (key) {
+	key.classList.remove('pressing');
+};
+
+var registerKey = function (key) {
+	var code = parseInt(key.getAttribute('data-key'), 10);
+	window.addEventListener('keydown', function (e) {
+		if (e.which === code) {
+			showKeyPress(key);
+		}
+	});
+	window.addEventListener('keyup', function (e) {
+		if (e.which === code) {
+			showKeyRelease(key);
+		}
+	});
+	window.addEventListener('blur', function (e) {
+		showKeyRelease(key);
+	});
+};
+
+var registerAllKeys = function () {
+	var keys = document.querySelectorAll('.key');
+	for (var i = 0; i < keys.length; i++) {
+		registerKey(keys[i]);
+	}
+};
+
+var bindLockButton = function () {
+	var lock = document.getElementById('keylock');
+	lock.addEventListener('keydown', function (e) {
+		e.preventDefault();
+	});
+};
+
+document.addEventListener('DOMContentLoaded', registerAllKeys);
+document.addEventListener('DOMContentLoaded', bindLockButton);
+
+})();
+</script>
+
+<button id="keylock" tabindex="-1"></button>
+
+<div class="keyboard">
+	<div class="row row-top">
+		<div class="key key-esc" data-key="27"></div>
+		<div class="key key-f1" data-key="112"></div>
+		<div class="key key-f2" data-key="113"></div>
+		<div class="key key-f3" data-key="114"></div>
+		<div class="key key-f4" data-key="115"></div>
+		<div class="key key-f5" data-key="116"></div>
+		<div class="key key-f6" data-key="117"></div>
+		<div class="key key-f7" data-key="118"></div>
+		<div class="key key-f8" data-key="119"></div>
+		<div class="key key-f9" data-key="120"></div>
+		<div class="key key-f10" data-key="121"></div>
+		<div class="key key-f11" data-key="122"></div>
+		<div class="key key-f12" data-key="123"></div>
+		<div class="key key-prtsc" data-key="44"></div>
+		<div class="key key-scrlk" data-key="145"></div>
+		<div class="key key-pause" data-key="19"></div>
+		<div class="key key-calc" data-key="183"></div>
+		<div class="key key-computer" data-key="182"></div>
+		<div class="key key-mail" data-key="180"></div>
+		<div class="key key-home" data-key="0"></div>
+	</div>
+	<div class="block block-0 block-main">
+		<div class="row row-0 row-numbers">
+			<div class="key" data-key="192"></div>
+			<div class="key" data-key="49"></div>
+			<div class="key" data-key="50"></div>
+			<div class="key" data-key="51"></div>
+			<div class="key" data-key="52"></div>
+			<div class="key" data-key="53"></div>
+			<div class="key" data-key="54"></div>
+			<div class="key" data-key="55"></div>
+			<div class="key" data-key="56"></div>
+			<div class="key" data-key="57"></div>
+			<div class="key" data-key="48"></div>
+			<div class="key" data-key="189"></div>
+			<div class="key" data-key="187"></div>
+			<div class="key key-backspace" data-key="8"></div>
+		</div>
+		<div class="row row-1">
+			<div class="key key-tab" data-key="9"></div>
+			<div class="key" data-key="81"></div>
+			<div class="key" data-key="87"></div>
+			<div class="key" data-key="69"></div>
+			<div class="key" data-key="82"></div>
+			<div class="key" data-key="84"></div>
+			<div class="key" data-key="89"></div>
+			<div class="key" data-key="85"></div>
+			<div class="key" data-key="73"></div>
+			<div class="key" data-key="79"></div>
+			<div class="key" data-key="80"></div>
+			<div class="key" data-key="219"></div>
+			<div class="key" data-key="221"></div>
+			<div class="key key-backslash" data-key="220"></div>
+		</div>
+		<div class="row row-2 row-home">
+			<div class="key key-capslock" data-key="20"></div>
+			<div class="key" data-key="65"></div>
+			<div class="key" data-key="83"></div>
+			<div class="key" data-key="68"></div>
+			<div class="key key-bump" data-key="70"></div>
+			<div class="key" data-key="71"></div>
+			<div class="key" data-key="72"></div>
+			<div class="key key-bump" data-key="74"></div>
+			<div class="key" data-key="75"></div>
+			<div class="key" data-key="76"></div>
+			<div class="key" data-key="186"></div>
+			<div class="key" data-key="222"></div>
+			<div class="key key-enter key-enter-main" data-key="13"></div>
+		</div>
+		<div class="row row-3">
+			<div class="key key-shift left" data-key="16"></div>
+			<div class="key" data-key="90"></div>
+			<div class="key" data-key="88"></div>
+			<div class="key" data-key="67"></div>
+			<div class="key" data-key="86"></div>
+			<div class="key" data-key="66"></div>
+			<div class="key" data-key="78"></div>
+			<div class="key" data-key="77"></div>
+			<div class="key" data-key="188"></div>
+			<div class="key" data-key="190"></div>
+			<div class="key" data-key="191"></div>
+			<div class="key key-shift right" data-key="16"></div>
+		</div>
+		<div class="row row-4">
+			<div class="key key-ctrl left" data-key="17"></div>
+			<div class="key key-win left" data-key="91"></div>
+			<div class="key key-alt left" data-key="18"></div>
+			<div class="key key-spacebar" data-key="32"></div>
+			<div class="key key-alt right" data-key="18"></div>
+			<div class="key key-win right" data-key="92"></div>
+			<div class="key key-menu" data-key="93"></div>
+			<div class="key key-ctrl right" data-key="17"></div>
+		</div>
+	</div>
+	<div class="block block-1">
+		<div class="row row-0">
+			<div class="key" data-key="45"></div>
+			<div class="key" data-key="36"></div>
+			<div class="key" data-key="33"></div>
+		</div>
+		<div class="row row-1">
+			<div class="key" data-key="46"></div>
+			<div class="key" data-key="35"></div>
+			<div class="key" data-key="34"></div>
+		</div>
+		<div class="row row-2">
+
+		</div>
+		<div class="row row-3">
+			<div class="key key-up" data-key="38"></div>
+		</div>
+		<div class="row row-4">
+			<div class="key key-left" data-key="37"></div>
+			<div class="key key-down" data-key="40"></div>
+			<div class="key key-right" data-key="39"></div>
+		</div>
+	</div>
+	<div class="block block-2 block-numpad">
+		<div class="row row-0">
+			<div class="key" data-key="144"></div>
+			<div class="key" data-key="111"></div>
+			<div class="key" data-key="106"></div>
+			<div class="key" data-key="109"></div>
+		</div>
+		<div class="row row-1">
+			<div class="key" data-key="103"></div>
+			<div class="key" data-key="104"></div>
+			<div class="key" data-key="105"></div>
+			<div class="key key-plus-numpad" data-key="107"></div>
+		</div>
+		<div class="row row-2">
+			<div class="key" data-key="100"></div>
+			<div class="key key-midbump" data-key="101"></div>
+			<div class="key" data-key="102"></div>
+		</div>
+		<div class="row row-3">
+			<div class="key" data-key="97"></div>
+			<div class="key" data-key="98"></div>
+			<div class="key" data-key="99"></div>
+			<div class="key key-enter key-enter-numpad" data-key="13"></div>
+		</div>
+		<div class="row row-4">
+			<div class="key key-insert-numpad" data-key="96"></div>
+			<div class="key" data-key="110"></div>
+		</div>
+	</div>
+</div>
+
+<style>
+.keyboard {
+	cursor: default;
+}
+
+.block {
+	display: inline-block;
+	overflow: hidden;
+	margin: 5px;
+}
+
+.row-top {
+	margin: 5px;
+}
+
+.row {
+	height: 40px;
+}
+
+.key {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+}
+
+.key-esc { margin-right: 49px; }
+.key-f4 { margin-right: 20px; }
+.key-f8 { margin-right: 20px; }
+.key-f12 { margin-right: 17px; }
+.key-pause { margin-right: 15px; }
+.key-backspace { width: 60px; }
+.key-tab { width: 45px; }
+.key-backslash { width: 45px; }
+.key-capslock { width: 60px; }
+.key-enter-main { width: 75px; }
+.key-shift { width: 90px; }
+.key-ctrl { width: 40px; }
+.key-win { width: 40px; }
+.key-alt { width: 40px; }
+.key-spacebar { width: 256px; }
+.key-menu { width: 40px; }
+.key-plus-numpad { height: 70px; position: absolute; margin-left: 9px; }
+.key-enter-numpad { height: 70px; position: absolute; margin-left: 9px; }
+.key-insert-numpad { width: 76px; }
+
+.key-up {
+	margin-left: 49px;
+}
+
+/* theme */
+
+.key {
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.pressing {
+	background: rgba(0, 153, 204, 0.1);
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+#keylock {
+	font-family: 'glyphicons';
+	margin: 8px;
+	width: 30px;
+	height: 30px;
+}
+
+#keylock:before {
+	color: #888;
+	content: '\e205'
+}
+
+#keylock:focus:before {
+	color: #000;
+	content: '\e204'
+}
+
+@font-face {
+	font-family: 'glyphicons';
+	src: url('glyphicons-regular.ttf');
+}
+</style>
