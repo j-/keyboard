@@ -2,25 +2,24 @@
 @key-base-width: @key-base-size;
 @key-base-height: @key-base-size;
 
+@key-margin-vertical: (@key-base-height * 2 / 36);
+@key-margin-horizontal: (@key-base-height * 2 / 36);
+
 @gutter-vertical: (@key-base-height * 5 / 36);
 @gutter-horizontal: (@key-base-width * 5 / 36);
 
-@block-main-width: (15 * @key-base-width + 23 * @gutter-horizontal + 1);
-@block-middle-width: (3 * @key-base-width + 4 * @gutter-horizontal);
-@block-numpad-width: (4 * @key-base-width + 6 * @gutter-horizontal);
+@block-main-width: (15 * @key-base-width + 28 * @key-margin-horizontal);
+@block-middle-width: (3 * @key-base-width + 4 * @key-margin-horizontal);
+@block-numpad-width: (4 * @key-base-width + 6 * @key-margin-horizontal);
 
 .keyboard {
 	cursor: default;
 }
 
-.block,
-.row-top {
-	margin: @gutter-vertical @gutter-horizontal;
-}
-
 .block {
 	display: inline-block;
 	overflow: hidden;
+	margin: @gutter-vertical @gutter-horizontal;
 
 	&.block-0 {
 		width: @block-main-width;
@@ -37,18 +36,26 @@
 	height: (@key-base-size * 42 / 36);
 }
 
+.row,
+.group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.row-top {
+	margin-bottom: @gutter-vertical;
+}
+
 .key {
 	display: inline-block;
 	width: @key-base-width;
 	height: @key-base-height;
-	margin: (@key-base-height * 2 / 36) (@key-base-width * 2 / 36);
+	margin:  (@key-base-width * 2 / 36);
 }
 
-.key-esc { margin-right: (@key-base-width * 46 / 36); }
-.key-f4 { margin-right: (@key-base-width * 24 / 36); }
-.key-f8 { margin-right: (@key-base-width * 24 / 36); }
-.key-f12 { margin-right: (@key-base-width * 12 / 36); }
-.key-pause { margin-right: (@key-base-width * 15 / 36); }
 .key-backspace { width: (@key-base-width * 80 / 36); }
 .key-tab { width: (@key-base-width * 50 / 36); }
 .key-backslash { width: (@key-base-width * 65 / 36); }
@@ -61,12 +68,22 @@
 .key-alt { width: (@key-base-width * 50 / 36); }
 .key-spacebar { width: (@key-base-width * 256 / 36); }
 .key-menu { width: (@key-base-width * 40 / 36); }
-.key-plus-numpad { height: (@key-base-width * 78 / 36); position: absolute; margin-left: (@key-base-width * 6 / 36); }
-.key-enter-numpad { height: (@key-base-width * 78 / 36); position: absolute; margin-left: (@key-base-width * 6 / 36); }
+.key-plus-numpad { height: (@key-base-width * 78 / 36); position: absolute; }
+.key-enter-numpad { height: (@key-base-width * 78 / 36); position: absolute; }
 .key-insert-numpad { width: (@key-base-width * 80 / 36); }
 
 .key-up {
-	margin-left: (@key-base-width * 46 / 36);
+	margin-left: (@key-base-width + 2 * @key-margin-horizontal);
+}
+
+.block-numpad {
+	.row-1,
+	.row-2,
+	.row-3,
+	.row-4 {
+		justify-content: left;
+		width: (3 * @key-base-width + 4 * @key-margin-horizontal);
+	}
 }
 
 /* theme */
@@ -112,10 +129,7 @@
 	font-family: 'glyphicons';
 }
 
-.key-calc,
-.key-computer,
-.key-mail,
-.key-home {
+.group-extra {
 	display: none;
 }
 
