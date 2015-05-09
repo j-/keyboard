@@ -1,0 +1,146 @@
+.keyboard {
+	cursor: default;
+}
+
+.block {
+	display: inline-block;
+	overflow: hidden;
+	margin: 5px;
+}
+
+.row-top {
+	margin: 5px;
+}
+
+.row {
+	height: 42px;
+}
+
+.key {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	margin: 2px;
+}
+
+.key-esc { margin-right: 46px; }
+.key-f4 { margin-right: 24px; }
+.key-f8 { margin-right: 24px; }
+.key-f12 { margin-right: 12px; }
+.key-pause { margin-right: 15px; }
+.key-backspace { width: 80px; }
+.key-tab { width: 50px; }
+.key-backslash { width: 65px; }
+.key-capslock { width: 60px; }
+.key-enter-main { width: 100px; }
+.key-shift.left { width: 90px; }
+.key-shift.right { width: 114px; }
+.key-ctrl { width: 50px; }
+.key-win { width: 50px; }
+.key-alt { width: 50px; }
+.key-spacebar { width: 256px; }
+.key-menu { width: 40px; }
+.key-plus-numpad { height: 78px; position: absolute; margin-left: 6px; }
+.key-enter-numpad { height: 78px; position: absolute; margin-left: 6px; }
+.key-insert-numpad { width: 80px; }
+
+.key-up {
+	margin-left: 46px;
+}
+
+/* theme */
+
+.key {
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+	color: #666;
+	font: 10px Arial, sans-serif;
+	text-align: center;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.key span {
+	display: block;
+	line-height: 15px;
+}
+
+.key .small {
+	font-size: 8px;
+	line-height: 7.5px;
+}
+
+.key .large {
+	font-size: 11px;
+}
+
+.key-shift .sub.large {
+	font-size: 16px;
+}
+
+.key-plus-numpad .sup,
+.key-enter-numpad .sup {
+	margin-top: 20px;
+}
+
+.key-num8 .sub,
+.key-num4 .sub,
+.key-num6 .sub,
+.key-num2 .sub {
+	font-family: 'glyphicons';
+}
+
+.key-calc,
+.key-computer,
+.key-mail,
+.key-home {
+	display: none;
+}
+
+.key-bump:after {
+	display: block;
+	content: '';
+	width: 5px;
+	height: 1px;
+	margin: 15px auto 0;
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.pressing {
+	color: #079;
+	background: rgba(0, 153, 204, 0.1);
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+.key-bump.pressing:after {
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+#keylock {
+	font-family: 'glyphicons';
+	margin: 8px;
+	width: 30px;
+	height: 30px;
+}
+
+#keylock:before {
+	color: #888;
+	content: '\e205'
+}
+
+#keylock:focus:before {
+	color: #000;
+	content: '\e204'
+}
+
+@font-face {
+	font-family: 'glyphicons';
+	src: url('glyphicons-regular.ttf');
+}
