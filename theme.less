@@ -1,0 +1,91 @@
+.key {
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+	color: #666;
+	font: 10px Arial, sans-serif;
+	text-align: center;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.key span {
+	display: block;
+	line-height: 15px;
+}
+
+.key .small {
+	font-size: 8px;
+	line-height: 7.5px;
+}
+
+.key .large {
+	font-size: 11px;
+}
+
+.key-shift .sub.large {
+	font-size: 16px;
+}
+
+.key-plus-numpad .sup,
+.key-enter-numpad .sup {
+	margin-top: 20px;
+}
+
+.key-num8 .sub,
+.key-num4 .sub,
+.key-num6 .sub,
+.key-num2 .sub {
+	font-family: 'glyphicons';
+}
+
+.group-extra {
+	display: none;
+}
+
+.key-bump:after {
+	display: block;
+	content: '';
+	width: 5px;
+	height: 1px;
+	margin: 15px auto 0;
+	box-shadow:
+		0 0 0 1px #ccc,
+		0 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.pressing {
+	color: #079;
+	background: rgba(0, 153, 204, 0.1);
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+.key-bump.pressing:after {
+	box-shadow:
+		0 0 0 1px #09c,
+		0 2px 0 0 rgba(0, 153, 204, 0.3);
+}
+
+#keylock {
+	font-family: 'glyphicons';
+	margin: 8px;
+	width: 30px;
+	height: 30px;
+}
+
+#keylock:before {
+	color: #888;
+	content: '\e205'
+}
+
+#keylock:focus:before {
+	color: #000;
+	content: '\e204'
+}
+
+@font-face {
+	font-family: 'glyphicons';
+	src: url('glyphicons-regular.ttf');
+}
