@@ -14,76 +14,76 @@
 
 .keyboard {
 	cursor: default;
-}
 
-.block {
-	display: inline-block;
-	overflow: hidden;
-	margin: @gutter-vertical @gutter-horizontal;
+	.block {
+		display: inline-block;
+		overflow: hidden;
+		margin: @gutter-vertical @gutter-horizontal;
 
-	&.block-0 {
-		width: @block-main-width;
+		&.block-0 {
+			width: @block-main-width;
+		}
+		&.block-1 {
+			width: @block-middle-width;
+		}
+		&.block-2 {
+			width: @block-numpad-width;
+		}
 	}
-	&.block-1 {
-		width: @block-middle-width;
+
+	.row {
+		height: (@key-base-height * 42 / 36);
 	}
-	&.block-2 {
-		width: @block-numpad-width;
+
+	.row,
+	.group {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: stretch;
 	}
-}
 
-.row {
-	height: (@key-base-height * 42 / 36);
-}
+	.row-top {
+		margin-bottom: @gutter-vertical;
+	}
 
-.row,
-.group {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: stretch;
-}
+	.key {
+		display: inline-block;
+		width: @key-base-width;
+		height: @key-base-height;
+		margin:  (@key-base-width * 2 / 36);
+	}
 
-.row-top {
-	margin-bottom: @gutter-vertical;
-}
+	.key-backspace { width: (@key-base-width * 80 / 36); }
+	.key-tab { width: (@key-base-width * 50 / 36); }
+	.key-backslash { width: (@key-base-width * 65 / 36); }
+	.key-capslock { width: (@key-base-width * 60 / 36); }
+	.key-enter-main { width: (@key-base-width * 100 / 36); }
+	.key-shift.left { width: (@key-base-width * 90 / 36); }
+	.key-shift.right { width: (@key-base-width * 114 / 36); }
+	.key-ctrl { width: (@key-base-width * 50 / 36); }
+	.key-win { width: (@key-base-width * 50 / 36); }
+	.key-alt { width: (@key-base-width * 50 / 36); }
+	.key-spacebar { width: (@key-base-width * 256 / 36); }
+	.key-menu { width: (@key-base-width * 40 / 36); }
+	.key-plus-numpad { height: (@key-base-height * 78 / 36); position: absolute; }
+	.key-enter-numpad { height: (@key-base-height * 78 / 36); position: absolute; }
+	.key-insert-numpad { width: (@key-base-width * 80 / 36); }
 
-.key {
-	display: inline-block;
-	width: @key-base-width;
-	height: @key-base-height;
-	margin:  (@key-base-width * 2 / 36);
-}
+	// up key
+	.block-1 .row-3 {
+		justify-content: space-around;
+	}
 
-.key-backspace { width: (@key-base-width * 80 / 36); }
-.key-tab { width: (@key-base-width * 50 / 36); }
-.key-backslash { width: (@key-base-width * 65 / 36); }
-.key-capslock { width: (@key-base-width * 60 / 36); }
-.key-enter-main { width: (@key-base-width * 100 / 36); }
-.key-shift.left { width: (@key-base-width * 90 / 36); }
-.key-shift.right { width: (@key-base-width * 114 / 36); }
-.key-ctrl { width: (@key-base-width * 50 / 36); }
-.key-win { width: (@key-base-width * 50 / 36); }
-.key-alt { width: (@key-base-width * 50 / 36); }
-.key-spacebar { width: (@key-base-width * 256 / 36); }
-.key-menu { width: (@key-base-width * 40 / 36); }
-.key-plus-numpad { height: (@key-base-height * 78 / 36); position: absolute; }
-.key-enter-numpad { height: (@key-base-height * 78 / 36); position: absolute; }
-.key-insert-numpad { width: (@key-base-width * 80 / 36); }
-
-// up key
-.block-1 .row-3 {
-	justify-content: space-around;
-}
-
-.block-numpad {
-	.row-1,
-	.row-2,
-	.row-3,
-	.row-4 {
-		justify-content: left;
-		width: (3 * @key-base-width + 4 * @key-margin-horizontal);
+	.block-numpad {
+		.row-1,
+		.row-2,
+		.row-3,
+		.row-4 {
+			justify-content: left;
+			width: (3 * @key-base-width + 4 * @key-margin-horizontal);
+		}
 	}
 }
 
