@@ -12,12 +12,15 @@
 @block-middle-width: (3 * @key-base-width + 4 * @key-margin-horizontal);
 @block-numpad-width: (4 * @key-base-width + 6 * @key-margin-horizontal);
 
+@keyboard-width: (@block-main-width + @block-middle-width + @block-numpad-width + 6 * @gutter-horizontal);
+
 .keyboard {
 	cursor: default;
+	width: @keyboard-width;
 
 	.block {
 		display: inline-block;
-		overflow: hidden;
+		float: left;
 		margin: @gutter-vertical @gutter-horizontal;
 
 		&.block-0 {
