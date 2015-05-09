@@ -2,18 +2,35 @@
 @key-base-width: @key-base-size;
 @key-base-height: @key-base-size;
 
+@gutter-vertical: (@key-base-height * 5 / 36);
+@gutter-horizontal: (@key-base-width * 5 / 36);
+
+@block-main-width: (15 * @key-base-width + 23 * @gutter-horizontal + 1);
+@block-middle-width: (3 * @key-base-width + 4 * @gutter-horizontal);
+@block-numpad-width: (4 * @key-base-width + 6 * @gutter-horizontal);
+
 .keyboard {
 	cursor: default;
+}
+
+.block,
+.row-top {
+	margin: @gutter-vertical @gutter-horizontal;
 }
 
 .block {
 	display: inline-block;
 	overflow: hidden;
-	margin: (@key-base-height * 5 / 36) (@key-base-width * 5 / 36);
-}
 
-.row-top {
-	margin: (@key-base-height * 5 / 36) (@key-base-width * 5 / 36);
+	&.block-0 {
+		width: @block-main-width;
+	}
+	&.block-1 {
+		width: @block-middle-width;
+	}
+	&.block-2 {
+		width: @block-numpad-width;
+	}
 }
 
 .row {
