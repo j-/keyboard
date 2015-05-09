@@ -9,47 +9,47 @@
 .block {
 	display: inline-block;
 	overflow: hidden;
-	margin: 5px;
+	margin: (@key-base-height * 5 / 36) (@key-base-width * 5 / 36);
 }
 
 .row-top {
-	margin: 5px;
+	margin: (@key-base-height * 5 / 36) (@key-base-width * 5 / 36);
 }
 
 .row {
-	height: 42px;
+	height: (@key-base-size * 42 / 36);
 }
 
 .key {
 	display: inline-block;
 	width: @key-base-width;
 	height: @key-base-height;
-	margin: 2px;
+	margin: (@key-base-height * 2 / 36) (@key-base-width * 2 / 36);
 }
 
-.key-esc { margin-right: 46px; }
-.key-f4 { margin-right: 24px; }
-.key-f8 { margin-right: 24px; }
-.key-f12 { margin-right: 12px; }
-.key-pause { margin-right: 15px; }
-.key-backspace { width: 80px; }
-.key-tab { width: 50px; }
-.key-backslash { width: 65px; }
-.key-capslock { width: 60px; }
-.key-enter-main { width: 100px; }
-.key-shift.left { width: 90px; }
-.key-shift.right { width: 114px; }
-.key-ctrl { width: 50px; }
-.key-win { width: 50px; }
-.key-alt { width: 50px; }
-.key-spacebar { width: 256px; }
-.key-menu { width: 40px; }
-.key-plus-numpad { height: 78px; position: absolute; margin-left: 6px; }
-.key-enter-numpad { height: 78px; position: absolute; margin-left: 6px; }
-.key-insert-numpad { width: 80px; }
+.key-esc { margin-right: (@key-base-width * 46 / 36); }
+.key-f4 { margin-right: (@key-base-width * 24 / 36); }
+.key-f8 { margin-right: (@key-base-width * 24 / 36); }
+.key-f12 { margin-right: (@key-base-width * 12 / 36); }
+.key-pause { margin-right: (@key-base-width * 15 / 36); }
+.key-backspace { width: (@key-base-width * 80 / 36); }
+.key-tab { width: (@key-base-width * 50 / 36); }
+.key-backslash { width: (@key-base-width * 65 / 36); }
+.key-capslock { width: (@key-base-width * 60 / 36); }
+.key-enter-main { width: (@key-base-width * 100 / 36); }
+.key-shift.left { width: (@key-base-width * 90 / 36); }
+.key-shift.right { width: (@key-base-width * 114 / 36); }
+.key-ctrl { width: (@key-base-width * 50 / 36); }
+.key-win { width: (@key-base-width * 50 / 36); }
+.key-alt { width: (@key-base-width * 50 / 36); }
+.key-spacebar { width: (@key-base-width * 256 / 36); }
+.key-menu { width: (@key-base-width * 40 / 36); }
+.key-plus-numpad { height: (@key-base-width * 78 / 36); position: absolute; margin-left: (@key-base-width * 6 / 36); }
+.key-enter-numpad { height: (@key-base-width * 78 / 36); position: absolute; margin-left: (@key-base-width * 6 / 36); }
+.key-insert-numpad { width: (@key-base-width * 80 / 36); }
 
 .key-up {
-	margin-left: 46px;
+	margin-left: (@key-base-width * 46 / 36);
 }
 
 /* theme */
