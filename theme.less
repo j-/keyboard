@@ -23,6 +23,8 @@ body {
 }
 
 .key {
+	border: none;
+	outline: none;
 	background-color: #fff;
 	box-shadow:
 		0 0 0 1px #ccc,
@@ -32,6 +34,7 @@ body {
 	text-align: center;
 	line-height: 30px;
 	overflow: hidden;
+	position: relative;
 }
 
 .key span {
@@ -73,13 +76,18 @@ body {
 	content: '';
 	width: 5px;
 	height: 1px;
-	margin: 15px auto 0;
+	margin: 0 auto;
 	box-shadow:
 		0 0 0 1px #ccc,
 		0 2px 0 0 rgba(0, 0, 0, 0.1);
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	margin-left: -2.5px;
 }
 
-.pressing {
+.key:active,
+.key.pressing {
 	color: #079;
 	background: rgba(0, 153, 204, 0.1);
 	box-shadow:
@@ -87,6 +95,7 @@ body {
 		0 2px 0 0 rgba(0, 153, 204, 0.3);
 }
 
+.key-bump:active:after,
 .key-bump.pressing:after {
 	box-shadow:
 		0 0 0 1px #09c,
