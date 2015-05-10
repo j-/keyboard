@@ -20,20 +20,29 @@ var isCapslockOn = function (e) {
 };
 
 var state = null;
+var stateView;
 
-var lastState = state;
+var stateMap = {
+	null: 'Caps lock state is unknown',
+	true: 'Caps lock is on',
+	false: 'Caps lock is off'
+};
+
+var stateClasses = {
+	null: 'text-muted',
+	true: 'text-danger',
+	false: 'text-success'
+};
+
+var lastState;
 var showState = function () {
 	if (state !== lastState) {
 		lastState = state;
-		if (state === null) {
-			console.info('Caps lock state is unknown');
-		}
-		else if (state) {
-			console.info('Caps lock is on');
-		}
-		else {
-			console.info('Caps lock is off');
-		}
+		var stateText = stateMap[state];
+		var stateClass = stateClasses[state];
+		stateView.textContent = stateText;
+		stateView.className = stateClass;
+		console.log(stateText);
 	}
 };
 
@@ -55,6 +64,11 @@ window.addEventListener('keydown', function (e) {
 
 window.addEventListener('blur', function (e) {
 	state = null;
+	showState();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+	stateView = document.getElementById('capslock-state');
 	showState();
 });
 
