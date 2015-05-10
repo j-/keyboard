@@ -123,10 +123,15 @@ var getKeyNameByCode = function (code) {
 	return keys[code] || null;
 };
 
-window.addEventListener('keydown', function (e) {
-	var which = e.which;
+var logKeypress = function (which, e) {
 	console.log(which, getKeyNameByCode(which), e);
-});
+};
+
+var handleKeypress = function (e) {
+	logKeypress(e.which, e);
+};
+
+window.addEventListener('keydown', handleKeypress);
 
 var showKeyPress = function (key) {
 	key.classList.add('pressing');
@@ -167,7 +172,21 @@ var bindLockButton = function () {
 	});
 };
 
+var handleClick = function (e) {
+	e.preventDefault();
+	var which = Number(this.dataset.key);
+	logKeypress(which, e);
+};
+
+var handleClicks = function () {
+	var keys = document.querySelectorAll('.key');
+	for (var i = 0; i < keys.length; i++) {
+		keys[i].addEventListener('click', handleClick);
+	}
+};
+
 document.addEventListener('DOMContentLoaded', registerAllKeys);
 document.addEventListener('DOMContentLoaded', bindLockButton);
+document.addEventListener('DOMContentLoaded', handleClicks);
 
 })();
