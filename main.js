@@ -1,5 +1,7 @@
 (function () {
 
+var ACTIVE_CLASS = 'active';
+
 /*
 
 The keyCode value differs between the different keyboard events. The above table is mapped for keydown and keyup. For keypress, you need only use String.fromCharCode(event.which). This will return the true input value - e.g. shift, caps lock, etc. Hope this clarifies for future readers.
@@ -134,11 +136,11 @@ var handleKeypress = function (e) {
 window.addEventListener('keydown', handleKeypress);
 
 var showKeyPress = function (key) {
-	key.classList.add('pressing');
+	key.classList.add(ACTIVE_CLASS);
 };
 
 var showKeyRelease = function (key) {
-	key.classList.remove('pressing');
+	key.classList.remove(ACTIVE_CLASS);
 };
 
 var registerKey = function (key) {
