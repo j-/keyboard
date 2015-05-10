@@ -121,12 +121,17 @@ var keys = {
 	222: 'single quote'
 };
 
+var keyCodeView, keyNameView;
+
 var getKeyNameByCode = function (code) {
 	return keys[code] || null;
 };
 
 var logKeypress = function (which, e) {
-	console.log(which, getKeyNameByCode(which), e);
+	var name = getKeyNameByCode(which);
+	console.log(which, name, e);
+	keyCodeView.textContent = which;
+	keyNameView.textContent = name;
 };
 
 var handleKeypress = function (e) {
@@ -187,8 +192,14 @@ var handleClicks = function () {
 	}
 };
 
+var initializeViews = function () {
+	keyCodeView = document.getElementById('keycode-view');
+	keyNameView = document.getElementById('keyname-view');
+};
+
 document.addEventListener('DOMContentLoaded', registerAllKeys);
 document.addEventListener('DOMContentLoaded', bindLockButton);
 document.addEventListener('DOMContentLoaded', handleClicks);
+document.addEventListener('DOMContentLoaded', initializeViews);
 
 })();
