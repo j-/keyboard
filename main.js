@@ -3,14 +3,6 @@
 var ACTIVE_CLASS = 'active';
 var KEY_SEPARATOR = ',';
 
-/*
-
-The keyCode value differs between the different keyboard events. The above table is mapped for keydown and keyup. For keypress, you need only use String.fromCharCode(event.which). This will return the true input value - e.g. shift, caps lock, etc. Hope this clarifies for future readers.
-
-http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes#comment-1077577632
-
-*/
-
 var keys = {
 	  8: 'backspace',
 	  9: 'tab',
