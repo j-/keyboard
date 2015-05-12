@@ -1,6 +1,7 @@
 (function () {
 
 var ACTIVE_CLASS = 'active';
+var KEY_SEPARATOR = ',';
 
 /*
 
@@ -151,7 +152,7 @@ var showKeyRelease = function (key) {
 var registerKey = function (key) {
 	var codes = key.dataset.key;
 	var location = Number(key.dataset.location) || 0;
-	codes.split(',').map(Number).forEach(function (code) {
+	codes.split(KEY_SEPARATOR).map(Number).forEach(function (code) {
 		window.addEventListener('keydown', function (e) {
 			if (e.which === code && e.location === location) {
 				showKeyPress(key);
@@ -184,7 +185,9 @@ var bindLockButton = function () {
 
 var handleClick = function (e) {
 	e.preventDefault();
-	var which = Number(this.dataset.key);
+	var key = this.dataset.key;
+	var first = key.split(KEY_SEPARATOR, 1)[0];
+	var which = Number(first);
 	logKeypress(which, e);
 };
 
