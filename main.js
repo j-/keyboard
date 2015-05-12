@@ -149,20 +149,22 @@ var showKeyRelease = function (key) {
 };
 
 var registerKey = function (key) {
-	var code = parseInt(key.getAttribute('data-key'), 10);
-	var location = parseInt(key.getAttribute('data-location'), 10) || 0;
-	window.addEventListener('keydown', function (e) {
-		if (e.which === code && e.location === location) {
-			showKeyPress(key);
-		}
-	});
-	window.addEventListener('keyup', function (e) {
-		if (e.which === code) {
+	var codes = key.dataset.key;
+	var location = Number(key.dataset.location) || 0;
+	codes.split(',').map(Number).forEach(function (code) {
+		window.addEventListener('keydown', function (e) {
+			if (e.which === code && e.location === location) {
+				showKeyPress(key);
+			}
+		});
+		window.addEventListener('keyup', function (e) {
+			if (e.which === code) {
+				showKeyRelease(key);
+			}
+		});
+		window.addEventListener('blur', function (e) {
 			showKeyRelease(key);
-		}
-	});
-	window.addEventListener('blur', function (e) {
-		showKeyRelease(key);
+		});
 	});
 };
 
