@@ -150,8 +150,9 @@ var showKeyRelease = function (key) {
 
 var registerKey = function (key) {
 	var code = parseInt(key.getAttribute('data-key'), 10);
+	var location = parseInt(key.getAttribute('data-location'), 10) || 0;
 	window.addEventListener('keydown', function (e) {
-		if (e.which === code) {
+		if (e.which === code && e.location === location) {
 			showKeyPress(key);
 		}
 	});
