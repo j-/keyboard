@@ -29,5 +29,9 @@ When possible, determine if either caps lock or num lock is enabled/disabled.
 Use this app offline. Stores source files in a local cache. You only need to be
 online to check for new versions.
 
+## License
+
+[MIT license](LICENSE).
+
 [gh-pages]: http://j-.github.io/keyboard/
 [screenshot]: screenshot.png
