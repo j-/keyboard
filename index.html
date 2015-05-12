@@ -12,9 +12,9 @@
 <script src="less.js"></script>
 <script src="main.js"></script>
 <script src="caps.js"></script>
+<script src="num.js"></script>
 
 <button id="keylock" tabindex="-1"></button>
-<span id="capslock-state" class="text-muted"></span>
 
 <div class="keyboard-container">
 	<div class="keyboard">
@@ -423,12 +423,14 @@
 	</div>
 </div>
 
-<div class="last-pressed">
+<p class="last-pressed">
 	<label>Last pressed:</label>
 	<span id="keycode-view"></span>
 	<span id="keyname-view"></span>
-</div>
+</p>
 
+<p><span id="capslock-state" class="text-muted"></span></p>
+<p><span id="numlock-state" class="text-muted"></span></p>
 <p class="text-muted">Check console for logs</p>
 
 </html>
