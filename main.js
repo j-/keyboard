@@ -159,7 +159,7 @@ var registerKey = function (key) {
 			}
 		});
 		window.addEventListener('keyup', function (e) {
-			if (e.which === code && e.location === location) {
+			if (e.which === code) {
 				showKeyRelease(key);
 			}
 		});
