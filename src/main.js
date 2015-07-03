@@ -3,6 +3,7 @@ import 'lib/less';
 import 'src/cache';
 import 'src/caps';
 import 'src/num';
+import 'src/key-view';
 
 const ACTIVE_CLASS = 'active';
 const KEY_SEPARATOR = ',';
