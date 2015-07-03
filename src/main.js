@@ -195,6 +195,6 @@ var handleClicks = function () {
 	}
 };
 
-document.addEventListener('DOMContentLoaded', registerAllKeys);
-document.addEventListener('DOMContentLoaded', bindLockButton);
-document.addEventListener('DOMContentLoaded', handleClicks);
+registerAllKeys();
+bindLockButton();
+handleClicks();
