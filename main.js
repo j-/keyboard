@@ -1,7 +1,10 @@
-(function () {
+import 'cache';
+import 'less';
+import 'caps';
+import 'num';
 
-var ACTIVE_CLASS = 'active';
-var KEY_SEPARATOR = ',';
+const ACTIVE_CLASS = 'active';
+const KEY_SEPARATOR = ',';
 
 var keys = {
 	  8: 'backspace',
@@ -114,7 +117,8 @@ var keys = {
 	222: 'single quote'
 };
 
-var keyCodeView, keyNameView;
+var keyCodeView = document.getElementById('keycode-view');
+var keyNameView = document.getElementById('keyname-view');
 
 var getKeyNameByCode = function (code) {
 	return keys[code] || null;
@@ -190,14 +194,6 @@ var handleClicks = function () {
 	}
 };
 
-var initializeViews = function () {
-	keyCodeView = document.getElementById('keycode-view');
-	keyNameView = document.getElementById('keyname-view');
-};
-
 document.addEventListener('DOMContentLoaded', registerAllKeys);
 document.addEventListener('DOMContentLoaded', bindLockButton);
 document.addEventListener('DOMContentLoaded', handleClicks);
-document.addEventListener('DOMContentLoaded', initializeViews);
-
-})();

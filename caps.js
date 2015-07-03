@@ -1,6 +1,4 @@
-(function () {
-
-var CAPSLOCK = 20;
+const CAPSLOCK = 20;
 
 var isCapslockKey = function (e) {
 	return e.which === CAPSLOCK;
@@ -20,7 +18,7 @@ var isCapslockOn = function (e) {
 };
 
 var state = null;
-var stateView;
+var stateView = document.getElementById('capslock-state');
 
 var stateMap = {
 	null: 'Caps lock state is unknown',
@@ -67,9 +65,6 @@ window.addEventListener('blur', function (e) {
 	showState();
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-	stateView = document.getElementById('capslock-state');
-	showState();
-});
+showState();
 
-})();
+export default null;

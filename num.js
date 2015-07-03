@@ -1,9 +1,7 @@
-(function () {
+const NUMLOCK = 144;
 
-var NUMLOCK = 144;
-
-var LOC_STANDARD = 0;
-var LOC_NUMPAD = 3;
+const LOC_STANDARD = 0;
+const LOC_NUMPAD = 3;
 
 var numpadKeys = {
 	// capslock is off
@@ -49,7 +47,7 @@ var isNumlockOn = function (e) {
 };
 
 var state = null;
-var stateView;
+var stateView = document.getElementById('numlock-state');
 
 var stateMap = {
 	null: 'Num lock state is unknown',
@@ -96,9 +94,7 @@ window.addEventListener('blur', function (e) {
 	showState();
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-	stateView = document.getElementById('numlock-state');
-	showState();
-});
+showState();
 
-})();
+export default null;
+
