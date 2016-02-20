@@ -3,6 +3,14 @@ export default class KeyboardKey extends HTMLButtonElement {
 		return 'button';
 	}
 
+	get location () {
+		return Number(this.dataset.location);
+	}
+
+	get which () {
+		return Number(this.dataset.which);
+	}
+
 	attachedCallback () {
 		window.addEventListener('keydown', this.handleKeyDown);
 		window.addEventListener('keyup', this.handleKeyUp);
@@ -26,13 +34,13 @@ export default class KeyboardKey extends HTMLButtonElement {
 	}
 
 	handleKeyDown (e) {
-		if (e.which === Number(this.dataset.which)) {
+		if (e.which === this.which && e.location === this.location) {
 			this.classList.add('keydown');
 		}
 	}
 
 	handleKeyUp (e) {
-		if (e.which === Number(this.dataset.which)) {
+		if (e.which === this.which && e.location === this.location) {
 			this.classList.remove('keydown');
 		}
 	}
