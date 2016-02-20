@@ -1,3 +1,4 @@
+import 'normalize.css/normalize.css';
 import './styles/main.less';
 
 import CapslockModifierState from './classes/modifier-states/CapslockModifierState';
