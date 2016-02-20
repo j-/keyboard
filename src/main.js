@@ -18,7 +18,10 @@ num.start();
 num.on('change', (state) => console.info('Numlock', state));
 
 window.addEventListener('keydown', (e) => {
-	const { which, location } = e;
+	const { which, location, repeat } = e;
+	if (repeat) {
+		return;
+	}
 	const name = keynames[which];
 	const hex = (which < 0x10 ? '0' : '') + which.toString(16);
 	console.log('Keydown', { hex, which, location, name });
