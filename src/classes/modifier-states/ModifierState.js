@@ -32,6 +32,20 @@ export default class ModifierState extends Emitter {
 	}
 
 	/**
+	 * Start listening to an element for events that will help determine state.
+	 */
+	start () {
+		// No-op
+	}
+
+	/**
+	 * Stop listening to an element for events.
+	 */
+	stop (element = window) {
+		// No-op
+	}
+
+	/**
 	 * Switches on to off and off to on. If the state is unknown, does nothing.
 	 * @return {?Boolean} New state
 	 */
