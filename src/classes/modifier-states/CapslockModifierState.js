@@ -1,7 +1,6 @@
 import ModifierState from './ModifierState';
 
 const KEY_CAPSLOCK = 0x14;
-const STATE = Symbol('state');
 
 export default class CapslockModifierState extends ModifierState {
 	/**
@@ -37,18 +36,9 @@ export default class CapslockModifierState extends ModifierState {
 	 */
 	constructor () {
 		super();
-		this[STATE] = null;
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
-	}
-
-	/**
-	 * Returns the current state of this instance.
-	 * @return {?Boolean} Null if state is unknown, true or false otherwise
-	 */
-	getState () {
-		return this[STATE];
 	}
 
 	/**
@@ -66,7 +56,7 @@ export default class CapslockModifierState extends ModifierState {
 	handleKeyDown (e) {
 		const isCaps = CapslockModifierState.isCapslockKey(e);
 		if (isCaps) {
-			this.toggleCapslockState();
+			this.toggleState();
 		}
 	}
 
@@ -79,21 +69,6 @@ export default class CapslockModifierState extends ModifierState {
 		if (state !== null) {
 			this.setState(state);
 		}
-	}
-
-	/**
-	 * Set the new state of this instance. Emits a 'change' event if the new
-	 *   state is different to the previous state.
-	 * @param {*} state New state
-	 * @return {?Boolean} New state
-	 */
-	setState (state) {
-		const previous = this[STATE];
-		this[STATE] = state;
-		if (state !== previous) {
-			this.emit('change', state);
-		}
-		return state;
 	}
 
 	/**
@@ -118,17 +93,5 @@ export default class CapslockModifierState extends ModifierState {
 		element.removeEventListener('keypress', this.handleKeyPress);
 		element.removeEventListener('keydown', this.handleKeyDown);
 		element.removeEventListener('blur', this.handleBlur);
-	}
-
-	/**
-	 * Switches on to off and off to on. If the state is unknown, does nothing.
-	 * @return {?Boolean} New state
-	 */
-	toggleCapslockState () {
-		const previous = this[STATE];
-		if (previous !== null) {
-			this.setState(!previous);
-		}
-		return this.getState();
 	}
 }
