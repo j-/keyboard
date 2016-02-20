@@ -24,5 +24,5 @@ window.addEventListener('keydown', (e) => {
 	}
 	const name = keynames[which];
 	const hex = (which < 0x10 ? '0' : '') + which.toString(16);
-	console.log('Keydown', { hex, which, location, name });
+	console.log('Keydown', { hex, which, location, name }, e);
 });
