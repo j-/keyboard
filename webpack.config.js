@@ -10,13 +10,10 @@ module.exports = {
 		loaders: [
 			{
 				loader: 'babel-loader',
-
 				include: [
 					path.resolve(__dirname, 'src'),
 				],
-
 				test: /\.js$/,
-
 				query: {
 					plugins: ['transform-runtime'],
 					presets: ['es2015'],
@@ -24,12 +21,10 @@ module.exports = {
 			},
 			{
 				loader: 'style!css!less',
-
 				test: /\.less$/,
 			},
 			{
 				test: /\.css$/,
-
 				loader: 'style!css',
 			},
 		],
