@@ -1,3 +1,5 @@
+import './styles/main.less';
+
 import CapslockModifierState from './classes/modifier-states/CapslockModifierState';
 import NumlockModifierState from './classes/modifier-states/NumlockModifierState';
 

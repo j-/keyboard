@@ -22,6 +22,11 @@ module.exports = {
 					presets: ['es2015'],
 				},
 			},
+			{
+				loader: 'style!css!less',
+
+				test: /\.less$/,
+			}
 		],
 	},
 };
