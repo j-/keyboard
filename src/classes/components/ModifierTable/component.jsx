@@ -15,12 +15,12 @@ export default class ModifierTable extends React.Component {
 		this.handleBlur = this.handleBlur.bind(this);
 	}
 
-	componentDidMount () {
+	componentWillMount () {
 		window.addEventListener('keydown', this.handleKeydown);
 		window.addEventListener('blur', this.handleBlur);
 	}
 
-	componentDidUnmount () {
+	componentWillUnmount () {
 		window.removeEventListener('keydown', this.handleKeydown);
 		window.removeEventListener('blur', this.handleBlur);
 	}
