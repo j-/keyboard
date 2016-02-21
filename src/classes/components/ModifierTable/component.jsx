@@ -36,30 +36,23 @@ export default class ModifierTable extends React.Component {
 		this.state = {
 			modifiers: getModifiersStateFromEvent(null),
 		};
-		this.handleKeydown = this.handleKeydown.bind(this);
-		this.handleKeyup = this.handleKeyup.bind(this);
+		this.handleKeyboardEvent = this.handleKeyboardEvent.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
 	}
 
 	componentWillMount () {
-		window.addEventListener('keydown', this.handleKeydown);
-		window.addEventListener('keyup', this.handleKeyup);
+		window.addEventListener('keydown', this.handleKeyboardEvent);
+		window.addEventListener('keyup', this.handleKeyboardEvent);
 		window.addEventListener('blur', this.handleBlur);
 	}
 
 	componentWillUnmount () {
-		window.removeEventListener('keydown', this.handleKeydown);
-		window.removeEventListener('keyup', this.handleKeyup);
+		window.removeEventListener('keydown', this.handleKeyboardEvent);
+		window.removeEventListener('keyup', this.handleKeyboardEvent);
 		window.removeEventListener('blur', this.handleBlur);
 	}
 
-	handleKeydown (e) {
-		this.setState({
-			modifiers: getModifiersStateFromEvent(e),
-		});
-	}
-
-	handleKeyup (e) {
+	handleKeyboardEvent (e) {
 		this.setState({
 			modifiers: getModifiersStateFromEvent(e),
 		});
