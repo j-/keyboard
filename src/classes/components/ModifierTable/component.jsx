@@ -1,47 +1,71 @@
 import React from 'react';
 import ModifierTableRow from '../ModifierTableRow/component';
 
+const ALL_MODIFIERS = [
+	'Accel', // Deprecated
+	'Alt',
+	'AltGraph', // Not supported on Android
+	'CapsLock',
+	'Control',
+	'Fn', // Only supported on Android 3.0+
+	'FnLock', // Not supported
+	'Hyper', // Not supported
+	'Meta', // Not supported on Windows
+	'NumLock',
+	'OS', // Not supported on Android
+	'ScrollLock',
+	'Shift',
+	'Super', // Not supported
+	'Symbol', // Not supported
+	'SymbolLock', // Not supported
+	'Win', // IE only
+];
+
+function getModifiersStateFromEvent (e) {
+	return ALL_MODIFIERS.map((name) => {
+		const state = e ? e.getModifierState(name) : null;
+		return { name, state };
+	});
+}
+
 export default class ModifierTable extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			modifiers: [
-				{ name: 'CapsLock', state: null },
-				{ name: 'NumLock', state: null },
-				{ name: 'ScrollLock', state: null },
-			],
+			modifiers: getModifiersStateFromEvent(null),
 		};
 		this.handleKeydown = this.handleKeydown.bind(this);
+		this.handleKeyup = this.handleKeyup.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
 	}
 
 	componentWillMount () {
 		window.addEventListener('keydown', this.handleKeydown);
+		window.addEventListener('keyup', this.handleKeyup);
 		window.addEventListener('blur', this.handleBlur);
 	}
 
 	componentWillUnmount () {
 		window.removeEventListener('keydown', this.handleKeydown);
+		window.removeEventListener('keyup', this.handleKeyup);
 		window.removeEventListener('blur', this.handleBlur);
 	}
 
 	handleKeydown (e) {
 		this.setState({
-			modifiers: [
-				{ name: 'CapsLock', state: e.getModifierState('CapsLock') },
-				{ name: 'NumLock', state: e.getModifierState('NumLock') },
-				{ name: 'ScrollLock', state: e.getModifierState('ScrollLock') },
-			],
+			modifiers: getModifiersStateFromEvent(e),
+		});
+	}
+
+	handleKeyup (e) {
+		this.setState({
+			modifiers: getModifiersStateFromEvent(e),
 		});
 	}
 
 	handleBlur () {
 		this.setState({
-			modifiers: [
-				{ name: 'CapsLock', state: null },
-				{ name: 'NumLock', state: null },
-				{ name: 'ScrollLock', state: null },
-			],
+			modifiers: getModifiersStateFromEvent(null),
 		});
 	}
 
