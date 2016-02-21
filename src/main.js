@@ -3,19 +3,22 @@ import './styles/main.less';
 
 import keynames from './keynames';
 
-import CapsLockModifierState from './classes/modifier-states/CapsLockModifierState';
-import NumLockModifierState from './classes/modifier-states/NumLockModifierState';
+import ModifierState from './classes/ModifierState';
 
 import KeyboardKey from './classes/components/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
 
-const caps = new CapsLockModifierState();
+const caps = new ModifierState('CapsLock');
 caps.start();
-caps.on('change', (state) => console.info('Capslock', state));
+caps.on('change', (state) => console.info('CapsLock', state));
 
-const num = new NumLockModifierState();
+const num = new ModifierState('NumLock');
 num.start();
-num.on('change', (state) => console.info('Numlock', state));
+num.on('change', (state) => console.info('NumLock', state));
+
+const scroll = new ModifierState('ScrollLock');
+scroll.start();
+scroll.on('change', (state) => console.info('ScrollLock', state));
 
 window.addEventListener('keydown', (e) => {
 	const { which, location, repeat } = e;
