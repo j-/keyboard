@@ -3,9 +3,10 @@
 }
 
 .disabled {
-	color: #800;
+	color: #ccc;
+	font-style: italic;
 }
 
 .unknown {
-	color: #888;
+	display: none;
 }
