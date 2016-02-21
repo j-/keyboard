@@ -3,30 +3,29 @@ import styles from './styles.css';
 import ModifierTableRow from '../ModifierTableRow/component';
 
 const ALL_MODIFIERS = [
-	{ name: 'Accel',        description: 'Deprecated' },
-	{ name: 'Alt',          description: null },
-	{ name: 'AltGraph',     description: 'Not supported on Android' },
-	{ name: 'CapsLock',     description: null },
-	{ name: 'Control',      description: null },
-	{ name: 'Fn',           description: 'Only supported on Android 3.0+' },
-	{ name: 'FnLock',       description: 'Not supported' },
-	{ name: 'Hyper',        description: 'Not supported' },
-	{ name: 'Meta',         description: 'Not supported on Windows' },
-	{ name: 'NumLock',      description: null },
-	{ name: 'OS',           description: 'Not supported on Android' },
-	{ name: 'Scroll',       description: 'IE only' },
-	{ name: 'ScrollLock',   description: null },
-	{ name: 'Shift',        description: null },
-	{ name: 'Super',        description: 'Not supported' },
-	{ name: 'Symbol',       description: 'Not supported' },
-	{ name: 'SymbolLock',   description: 'Not supported' },
-	{ name: 'Win',          description: 'IE only' },
+	{ name: 'Accel',        state: null, description: 'Deprecated' },
+	{ name: 'Alt',          state: null, description: null },
+	{ name: 'AltGraph',     state: null, description: 'Not supported on Android' },
+	{ name: 'CapsLock',     state: null, description: null },
+	{ name: 'Control',      state: null, description: null },
+	{ name: 'Fn',           state: null, description: 'Only supported on Android 3.0+' },
+	{ name: 'FnLock',       state: null, description: 'Not supported' },
+	{ name: 'Hyper',        state: null, description: 'Not supported' },
+	{ name: 'Meta',         state: null, description: 'Not supported on Windows' },
+	{ name: 'NumLock',      state: null, description: null },
+	{ name: 'OS',           state: null, description: 'Not supported on Android' },
+	{ name: 'Scroll',       state: null, description: 'IE only' },
+	{ name: 'ScrollLock',   state: null, description: null },
+	{ name: 'Shift',        state: null, description: null },
+	{ name: 'Super',        state: null, description: 'Not supported' },
+	{ name: 'Symbol',       state: null, description: 'Not supported' },
+	{ name: 'SymbolLock',   state: null, description: 'Not supported' },
+	{ name: 'Win',          state: null, description: 'IE only' },
 ];
 
-function getModifiersStateFromEvent (e) {
-	return ALL_MODIFIERS.map(({ name, description }) => {
-		const state = e ? e.getModifierState(name) : null;
-		return { name, description, state };
+function updateModifiersStateFromEvent (modifiers, e) {
+	modifiers.forEach((modifier) => {
+		modifier.state = e ? e.getModifierState(modifier.name) : null;
 	});
 }
 
@@ -34,7 +33,7 @@ export default class ModifierTable extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			modifiers: getModifiersStateFromEvent(null),
+			modifiers: [...ALL_MODIFIERS],
 		};
 		this.handleKeyboardEvent = this.handleKeyboardEvent.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
@@ -53,15 +52,13 @@ export default class ModifierTable extends React.Component {
 	}
 
 	handleKeyboardEvent (e) {
-		this.setState({
-			modifiers: getModifiersStateFromEvent(e),
-		});
+		updateModifiersStateFromEvent(this.state.modifiers, e);
+		this.setState(this.state);
 	}
 
 	handleBlur () {
-		this.setState({
-			modifiers: getModifiersStateFromEvent(null),
-		});
+		updateModifiersStateFromEvent(this.state.modifiers, null);
+		this.setState(this.state);
 	}
 
 	getRows () {
