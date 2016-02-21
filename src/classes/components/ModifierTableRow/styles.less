@@ -1,0 +1,35 @@
+.row {
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
+.label {
+	text-align: left;
+	font-family: monospace;
+}
+
+.active {
+	composes: row;
+
+	// Active state, no hover
+	> th,
+	> td {
+		background-color: hsl(80, 100%, 90%);
+	}
+
+	// Active state, hover
+	&:hover > th,
+	&:hover > td {
+		background-color: hsl(80, 90%, 80%);
+	}
+}
+
+.inactive {
+	composes: row;
+
+	// Inactive state, hover
+	&:hover > th,
+	&:hover > td {
+		background-color: #eee;
+	}
+}

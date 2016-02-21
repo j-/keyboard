@@ -1,14 +1,16 @@
 import React from 'react';
-import styles from './styles.css';
+import styles from './styles.less';
 import ModifierState from '../ModifierState/component';
 
 export default class ModifierTableRow extends React.Component {
 	render () {
+		const { name, state, description } = this.props;
+		const rowStyle = (state === true) ? styles.active : styles.inactive;
 		return (
-			<tr className={ styles.row }>
-				<th className={ styles.label }>{ this.props.name }</th>
-				<td><ModifierState state={ this.props.state } /></td>
-				<td>{ this.props.description }</td>
+			<tr className={ rowStyle }>
+				<th className={ styles.label }>{ name }</th>
+				<td><ModifierState state={ state } /></td>
+				<td>{ description }</td>
 			</tr>
 		);
 	}
