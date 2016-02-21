@@ -16,11 +16,8 @@ import Application from './classes/components/Application/component';
 import KeyboardKey from './classes/elements/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
 
-window.addEventListener('keydown', (e) => {
-	const { which, location, repeat } = e;
-	if (repeat) {
-		return;
-	}
+function handleKeyEvent (e) {
+	const { type, which, location, repeat } = e;
 	const name = keynames[which];
 	const hex = (which < 0x10 ? '0' : '') + which.toString(16);
 	const modifiers = [
@@ -44,8 +41,11 @@ window.addEventListener('keydown', (e) => {
 	];
 	const enabled = modifiers.filter(([name, state]) => state);
 	const names = enabled.map(([name]) => name);
-	console.log('Keydown', e, { hex, which, location, name }, ...names);
-});
+	console.log(type, e, { hex, which, location, repeat, name }, ...names);
+}
+
+window.addEventListener('keydown', handleKeyEvent);
+window.addEventListener('keyup', handleKeyEvent);
 
 document.addEventListener('DOMContentLoaded', () => {
 	ReactDOM.render(
