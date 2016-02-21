@@ -12,9 +12,12 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				loader: 'babel-loader',
+				loader: 'babel',
 				include: [
 					path.resolve(__dirname, 'src'),
+				],
+				exclude: [
+					path.resolve(__dirname, 'node_modules'),
 				],
 				test: /\.jsx?$/,
 				query: {
@@ -23,12 +26,12 @@ module.exports = {
 				},
 			},
 			{
-				loader: 'style!css!less',
-				test: /\.less$/,
+				loader: 'style!css',
+				test: /\.css$/,
 			},
 			{
-				test: /\.css$/,
-				loader: 'style!css',
+				loader: 'style!css!less',
+				test: /\.less$/,
 			},
 		],
 	},
