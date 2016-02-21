@@ -13,6 +13,7 @@ const ALL_MODIFIERS = [
 	'Meta', // Not supported on Windows
 	'NumLock',
 	'OS', // Not supported on Android
+	'Scroll', // IE only
 	'ScrollLock',
 	'Shift',
 	'Super', // Not supported
