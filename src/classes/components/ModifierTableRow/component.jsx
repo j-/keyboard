@@ -8,6 +8,7 @@ export default class ModifierTableRow extends React.Component {
 			<tr className={ styles.row }>
 				<th className={ styles.label }>{ this.props.name }</th>
 				<td><ModifierState state={ this.props.state } /></td>
+				<td>{ this.props.description }</td>
 			</tr>
 		);
 	}

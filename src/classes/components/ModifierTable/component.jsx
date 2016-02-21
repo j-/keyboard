@@ -3,30 +3,30 @@ import styles from './styles.css';
 import ModifierTableRow from '../ModifierTableRow/component';
 
 const ALL_MODIFIERS = [
-	'Accel', // Deprecated
-	'Alt',
-	'AltGraph', // Not supported on Android
-	'CapsLock',
-	'Control',
-	'Fn', // Only supported on Android 3.0+
-	'FnLock', // Not supported
-	'Hyper', // Not supported
-	'Meta', // Not supported on Windows
-	'NumLock',
-	'OS', // Not supported on Android
-	'Scroll', // IE only
-	'ScrollLock',
-	'Shift',
-	'Super', // Not supported
-	'Symbol', // Not supported
-	'SymbolLock', // Not supported
-	'Win', // IE only
+	{ name: 'Accel',        description: 'Deprecated' },
+	{ name: 'Alt',          description: null },
+	{ name: 'AltGraph',     description: 'Not supported on Android' },
+	{ name: 'CapsLock',     description: null },
+	{ name: 'Control',      description: null },
+	{ name: 'Fn',           description: 'Only supported on Android 3.0+' },
+	{ name: 'FnLock',       description: 'Not supported' },
+	{ name: 'Hyper',        description: 'Not supported' },
+	{ name: 'Meta',         description: 'Not supported on Windows' },
+	{ name: 'NumLock',      description: null },
+	{ name: 'OS',           description: 'Not supported on Android' },
+	{ name: 'Scroll',       description: 'IE only' },
+	{ name: 'ScrollLock',   description: null },
+	{ name: 'Shift',        description: null },
+	{ name: 'Super',        description: 'Not supported' },
+	{ name: 'Symbol',       description: 'Not supported' },
+	{ name: 'SymbolLock',   description: 'Not supported' },
+	{ name: 'Win',          description: 'IE only' },
 ];
 
 function getModifiersStateFromEvent (e) {
-	return ALL_MODIFIERS.map((name) => {
+	return ALL_MODIFIERS.map(({ name, description }) => {
 		const state = e ? e.getModifierState(name) : null;
-		return { name, state };
+		return { name, description, state };
 	});
 }
 
@@ -73,7 +73,12 @@ export default class ModifierTable extends React.Component {
 
 	getRows () {
 		return this.state.modifiers.map((modifier) => {
-			return <ModifierTableRow key={ modifier.name } name={ modifier.name } state={ modifier.state } />
+			return <ModifierTableRow
+				key={ modifier.name }
+				name={ modifier.name }
+				description={ modifier.description }
+				state={ modifier.state }
+			/>
 		});
 	}
 
@@ -84,6 +89,7 @@ export default class ModifierTable extends React.Component {
 					<tr>
 						<th>Modifier name</th>
 						<th>State</th>
+						<th>Description</th>
 					</tr>
 				</thead>
 				<tbody>{ this.getRows() }</tbody>
