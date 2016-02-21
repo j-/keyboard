@@ -1,10 +1,21 @@
+// Styles
 import 'normalize.css';
 import './styles/main.less';
 
+// Libraries
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+// Helpers
 import keynames from './keynames';
 
+// Constructors
 import ModifierState from './classes/ModifierState';
 
+// React Components
+import Modifiers from './classes/components/Modifiers';
+
+// Web Components
 import KeyboardKey from './classes/elements/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
 
@@ -49,4 +60,11 @@ window.addEventListener('keydown', (e) => {
 	const enabled = modifiers.filter(([name, state]) => state);
 	const names = enabled.map(([name]) => name);
 	console.log('Keydown', e, { hex, which, location, name }, ...names);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+	ReactDOM.render(
+		React.createElement(Modifiers),
+		document.getElementById('app')
+	);
 });
