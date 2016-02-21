@@ -1,20 +1,21 @@
 import React from 'react';
+import ModifierTableRow from '../ModifierTableRow/component';
 
 export default class ModifierTable extends React.Component {
-	getModifiers () {
-		return [
-			{ name: 'CapsLock', state: null },
-			{ name: 'NumLock', state: null },
-			{ name: 'ScrollLock', state: null },
-		];
+	constructor (props) {
+		super(props);
+		this.state = {
+			modifiers: [
+				{ name: 'CapsLock', state: null },
+				{ name: 'NumLock', state: null },
+				{ name: 'ScrollLock', state: null },
+			],
+		};
 	}
 
 	getRows () {
-		return this.getModifiers().map((modifier) => {
-			return <div key={modifier.name}>
-				<strong>{modifier.name}</strong>:
-				<em>{String(modifier.state)}</em>
-			</div>;
+		return this.state.modifiers.map((modifier) => {
+			return <ModifierTableRow key={ modifier.name } name={ modifier.name } state={ modifier.state } />
 		});
 	}
 
