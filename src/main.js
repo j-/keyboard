@@ -5,7 +5,7 @@ import keynames from './keynames';
 
 import ModifierState from './classes/ModifierState';
 
-import KeyboardKey from './classes/components/KeyboardKey';
+import KeyboardKey from './classes/elements/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
 
 const caps = new ModifierState('CapsLock');
