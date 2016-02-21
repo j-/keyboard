@@ -6,3 +6,8 @@
 .table > thead > tr > th {
 	text-align: left;
 }
+
+.table > tbody > tr:hover > th,
+.table > tbody > tr:hover > td {
+	background-color: #eee;
+}
