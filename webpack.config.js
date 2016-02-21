@@ -13,10 +13,10 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, 'src'),
 				],
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				query: {
 					plugins: ['transform-runtime'],
-					presets: ['es2015'],
+					presets: ['es2015', 'react'],
 				},
 			},
 			{
