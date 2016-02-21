@@ -30,7 +30,7 @@ module.exports = {
 				test: /\.css$/,
 			},
 			{
-				loader: 'style!css!less',
+				loader: 'style!css?modules!less',
 				test: /\.less$/,
 			},
 		],
