@@ -1,13 +1,13 @@
 import ModifierState from './ModifierState';
 
-export default class CapslockModifierState extends ModifierState {
+export default class CapsLockModifierState extends ModifierState {
 	/**
 	 * Determine if capslock was on when this key was pressed.
 	 * @param {Event} e Event object
 	 * @return {?Boolean} Null if capslock was not detected, true if it is on,
 	 *   and false if it is off
 	 */
-	static isCapslockOn (e) {
+	static isCapsLockOn (e) {
 		return e.getModifierState('CapsLock');
 	}
 
@@ -33,7 +33,7 @@ export default class CapslockModifierState extends ModifierState {
 	 * @param {Event} e Event object
 	 */
 	handleKeyDown (e) {
-		const state = CapslockModifierState.isCapslockOn(e);
+		const state = CapsLockModifierState.isCapsLockOn(e);
 		if (state !== null) {
 			this.setState(state);
 		}

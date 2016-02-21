@@ -3,17 +3,17 @@ import './styles/main.less';
 
 import keynames from './keynames';
 
-import CapslockModifierState from './classes/modifier-states/CapslockModifierState';
-import NumlockModifierState from './classes/modifier-states/NumlockModifierState';
+import CapsLockModifierState from './classes/modifier-states/CapsLockModifierState';
+import NumLockModifierState from './classes/modifier-states/NumLockModifierState';
 
 import KeyboardKey from './classes/components/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
 
-const caps = new CapslockModifierState();
+const caps = new CapsLockModifierState();
 caps.start();
 caps.on('change', (state) => console.info('Capslock', state));
 
-const num = new NumlockModifierState();
+const num = new NumLockModifierState();
 num.start();
 num.on('change', (state) => console.info('Numlock', state));
 

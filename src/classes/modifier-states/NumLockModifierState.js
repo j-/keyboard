@@ -1,13 +1,13 @@
 import ModifierState from './ModifierState';
 
-export default class NumlockModifierState extends ModifierState {
+export default class NumLockModifierState extends ModifierState {
 	/**
 	 * Determine if numlock was on when this key was pressed.
 	 * @param {Event} e Event object
 	 * @return {?Boolean} Null if numlock was not detected, true if it is on,
 	 *   and false if it is off
 	 */
-	static isNumlockOn (e) {
+	static isNumLockOn (e) {
 		return e.getModifierState('NumLock');
 	}
 
@@ -33,7 +33,7 @@ export default class NumlockModifierState extends ModifierState {
 	 * @param {Event} e Event object
 	 */
 	handleKeyDown (e) {
-		const state = NumlockModifierState.isNumlockOn(e);
+		const state = NumLockModifierState.isNumLockOn(e);
 		if (state !== null) {
 			this.setState(state);
 		}
