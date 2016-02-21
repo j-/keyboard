@@ -9,27 +9,12 @@ import ReactDOM from 'react-dom';
 // Helpers
 import keynames from './keynames';
 
-// Constructors
-import ModifierState from './classes/ModifierState';
-
 // React Components
 import Application from './classes/components/Application/component';
 
 // Web Components
 import KeyboardKey from './classes/elements/KeyboardKey';
 const KeyboardKeyElement = document.registerElement('keyboard-key', KeyboardKey);
-
-const caps = new ModifierState('CapsLock');
-caps.start();
-caps.on('change', (state) => console.info('CapsLock', state));
-
-const num = new ModifierState('NumLock');
-num.start();
-num.on('change', (state) => console.info('NumLock', state));
-
-const scroll = new ModifierState('ScrollLock');
-scroll.start();
-scroll.on('change', (state) => console.info('ScrollLock', state));
 
 window.addEventListener('keydown', (e) => {
 	const { which, location, repeat } = e;
