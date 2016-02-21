@@ -1,0 +1,7 @@
+.lock {
+	color: #ccc;
+}
+
+.lock:focus {
+	color: #000;
+}
