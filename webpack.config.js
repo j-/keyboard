@@ -30,7 +30,19 @@ module.exports = {
 				test: /\.css$/,
 			},
 			{
+				// Use CSS Modules for React components
 				loader: 'style!css?modules!less',
+				include: [
+					path.resolve(__dirname, 'src/classes/components'),
+				],
+				test: /\.less$/,
+			},
+			{
+				// Regular LESS loader for general styles
+				loader: 'style!css!less',
+				include: [
+					path.resolve(__dirname, 'src/styles'),
+				],
 				test: /\.less$/,
 			},
 		],
