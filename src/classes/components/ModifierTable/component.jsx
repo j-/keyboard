@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Modifiers extends React.Component {
+export default class ModifierTable extends React.Component {
 	getModifiers () {
 		return [
 			{ name: 'CapsLock', state: null },

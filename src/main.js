@@ -13,7 +13,7 @@ import keynames from './keynames';
 import ModifierState from './classes/ModifierState';
 
 // React Components
-import Modifiers from './classes/components/Modifiers';
+import ModifierTable from './classes/components/ModifierTable/component';
 
 // Web Components
 import KeyboardKey from './classes/elements/KeyboardKey';
@@ -64,7 +64,7 @@ window.addEventListener('keydown', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	ReactDOM.render(
-		React.createElement(Modifiers),
+		React.createElement(ModifierTable),
 		document.getElementById('app')
 	);
 });
