@@ -11,6 +11,38 @@ export default class ModifierTable extends React.Component {
 				{ name: 'ScrollLock', state: null },
 			],
 		};
+		this.handleKeydown = this.handleKeydown.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
+	}
+
+	componentDidMount () {
+		window.addEventListener('keydown', this.handleKeydown);
+		window.addEventListener('blur', this.handleBlur);
+	}
+
+	componentDidUnmount () {
+		window.removeEventListener('keydown', this.handleKeydown);
+		window.removeEventListener('blur', this.handleBlur);
+	}
+
+	handleKeydown (e) {
+		this.setState({
+			modifiers: [
+				{ name: 'CapsLock', state: e.getModifierState('CapsLock') },
+				{ name: 'NumLock', state: e.getModifierState('NumLock') },
+				{ name: 'ScrollLock', state: e.getModifierState('ScrollLock') },
+			],
+		});
+	}
+
+	handleBlur () {
+		this.setState({
+			modifiers: [
+				{ name: 'CapsLock', state: null },
+				{ name: 'NumLock', state: null },
+				{ name: 'ScrollLock', state: null },
+			],
+		});
 	}
 
 	getRows () {
