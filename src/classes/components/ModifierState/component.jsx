@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './styles.css';
 
 const DESCRIPTIONS = {
-	true: 'enabled',
-	false: 'disabled',
+	true: 'active',
+	false: 'inactive',
 };
 
 const DEFAULT_DESCRIPTION = 'unknown';
 
 const CLASSNAMES = {
-	true: styles.enabled,
-	false: styles.disabled,
+	true: styles.active,
+	false: styles.inactive,
 };
 
 const DEFAULT_CLASSNAME = styles.unknown;

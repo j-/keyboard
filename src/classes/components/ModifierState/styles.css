@@ -1,8 +1,8 @@
-.enabled {
+.active {
 	color: #080;
 }
 
-.disabled {
+.inactive {
 	color: #ccc;
 	font-style: italic;
 }
