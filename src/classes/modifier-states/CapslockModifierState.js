@@ -1,17 +1,6 @@
 import ModifierState from './ModifierState';
 
-const KEY_CAPSLOCK = 0x14;
-
 export default class CapslockModifierState extends ModifierState {
-	/**
-	 * Takes an event object and determines if the pressed key was capslock.
-	 * @param {Event} e Event object
-	 * @return {Boolean} True if capslock, false otherwise
-	 */
-	static isCapslockKey (e) {
-		return e.which === KEY_CAPSLOCK;
-	}
-
 	/**
 	 * Determine if capslock was on when this key was pressed.
 	 * @param {Event} e Event object
@@ -19,16 +8,7 @@ export default class CapslockModifierState extends ModifierState {
 	 *   and false if it is off
 	 */
 	static isCapslockOn (e) {
-		const character = String.fromCharCode(e.which);
-		const upper = character.toUpperCase();
-		const lower = character.toLowerCase();
-		// Key does not have case
-		if (upper === lower) {
-			return null;
-		}
-		// Character is upper case and shift key is not held
-		// or character is lower case and shift key is held
-		return (character === upper) !== e.shiftKey;
+		return e.getModifierState('CapsLock');
 	}
 
 	/**
@@ -36,7 +16,6 @@ export default class CapslockModifierState extends ModifierState {
 	 */
 	constructor () {
 		super();
-		this.handleKeyPress = this.handleKeyPress.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
 	}
@@ -54,17 +33,6 @@ export default class CapslockModifierState extends ModifierState {
 	 * @param {Event} e Event object
 	 */
 	handleKeyDown (e) {
-		const isCaps = CapslockModifierState.isCapslockKey(e);
-		if (isCaps) {
-			this.toggleState();
-		}
-	}
-
-	/**
-	 * Handle element keypress events.
-	 * @param {Event} e Event object
-	 */
-	handleKeyPress (e) {
 		const state = CapslockModifierState.isCapslockOn(e);
 		if (state !== null) {
 			this.setState(state);
@@ -78,7 +46,6 @@ export default class CapslockModifierState extends ModifierState {
 	 */
 	start (element = window) {
 		this.setState(null);
-		element.addEventListener('keypress', this.handleKeyPress);
 		element.addEventListener('keydown', this.handleKeyDown);
 		element.addEventListener('blur', this.handleBlur);
 	}
@@ -90,7 +57,6 @@ export default class CapslockModifierState extends ModifierState {
 	 */
 	stop (element = window) {
 		this.setState(null);
-		element.removeEventListener('keypress', this.handleKeyPress);
 		element.removeEventListener('keydown', this.handleKeyDown);
 		element.removeEventListener('blur', this.handleBlur);
 	}
