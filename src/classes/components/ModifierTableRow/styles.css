@@ -1,4 +1,9 @@
+.row {
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
 .label {
-	display: inline-block;
-	width: 7.5em;
+	text-align: left;
+	font-family: monospace;
 }

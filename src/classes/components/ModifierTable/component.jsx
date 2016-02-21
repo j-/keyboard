@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles.css';
 import ModifierTableRow from '../ModifierTableRow/component';
 
 const ALL_MODIFIERS = [
@@ -77,6 +78,16 @@ export default class ModifierTable extends React.Component {
 	}
 
 	render () {
-		return <div>{ this.getRows() }</div>;
+		return (
+			<table className={ styles.table }>
+				<thead>
+					<tr>
+						<th>Modifier name</th>
+						<th>State</th>
+					</tr>
+				</thead>
+				<tbody>{ this.getRows() }</tbody>
+			</table>
+		);
 	}
 }
