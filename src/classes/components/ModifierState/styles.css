@@ -1,0 +1,11 @@
+.enabled {
+	color: #080;
+}
+
+.disabled {
+	color: #800;
+}
+
+.unknown {
+	color: #888;
+}
