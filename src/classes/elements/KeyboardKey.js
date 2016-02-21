@@ -4,11 +4,11 @@ export default class KeyboardKey extends HTMLButtonElement {
 	}
 
 	get location () {
-		return Number(this.dataset.location);
+		return this.dataset.location ? Number(this.dataset.location) : null;
 	}
 
 	get which () {
-		return Number(this.dataset.which);
+		return this.dataset.which ? Number(this.dataset.which) : null;
 	}
 
 	attachedCallback () {
@@ -34,13 +34,33 @@ export default class KeyboardKey extends HTMLButtonElement {
 	}
 
 	handleKeyDown (e) {
-		if (e.which === this.which && e.location === this.location) {
+		const same = (
+			// Keys match
+			e.which === this.which &&
+			(
+				// No location is specified
+				this.location === null ||
+				// A location is specified and it matches
+				e.location === this.location
+			)
+		);
+		if (same) {
 			this.classList.add('keydown');
 		}
 	}
 
 	handleKeyUp (e) {
-		if (e.which === this.which && e.location === this.location) {
+		const same = (
+			// Keys match
+			e.which === this.which &&
+			(
+				// No location is specified
+				this.location === null ||
+				// A location is specified and it matches
+				e.location === this.location
+			)
+		);
+		if (same) {
 			this.classList.remove('keydown');
 		}
 	}
