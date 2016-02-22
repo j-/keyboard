@@ -21,6 +21,8 @@ export default class KeyboardKey extends HTMLButtonElement {
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleKeyUp = this.handleKeyUp.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
+		// Apply custom width to element
+		this.style.flexGrow = this.dataset.width ? this.dataset.width : 1;
 	}
 
 	detachedCallback () {
