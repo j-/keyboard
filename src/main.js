@@ -1,5 +1,6 @@
 // Styles
 import 'normalize.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './styles/main.less';
 
 // Libraries

@@ -1,8 +1,0 @@
-.table {
-	table-layout: fixed;
-	width: 100%;
-}
-
-.table > thead > tr > th {
-	text-align: left;
-}

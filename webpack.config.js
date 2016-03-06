@@ -26,7 +26,7 @@ module.exports = {
 				},
 			},
 			{
-				loader: 'style!css?modules',
+				loader: 'style!css',
 				test: /\.css$/,
 			},
 			{
@@ -44,6 +44,10 @@ module.exports = {
 					path.resolve(__dirname, 'src/styles'),
 				],
 				test: /\.less$/,
+			},
+			{
+				loader: 'url?limit=100000',
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/,
 			},
 		],
 	},
