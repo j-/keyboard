@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import styles from './styles.less';
 
 export default class FocusLockButton extends React.Component {
@@ -8,9 +9,9 @@ export default class FocusLockButton extends React.Component {
 
 	render () {
 		return (
-			<button className={ styles.lock } onKeyDown={ this.cancelEvent } onKeyUp={ this.cancelEvent }>
+			<Button className={ styles.lock } onKeyDown={ this.cancelEvent } onKeyUp={ this.cancelEvent }>
 				Focus Lock
-			</button>
+			</Button>
 		);
 	}
 }
