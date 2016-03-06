@@ -5,7 +5,7 @@ import FocusLockButton from '../FocusLockButton/component';
 export default class Application extends React.Component {
 	render () {
 		return (
-			<div>
+			<div className="container">
 				<FocusLockButton />
 				<ModifierTable />
 			</div>
