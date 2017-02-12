@@ -1,0 +1,28 @@
+{
+  "name": "keyboard",
+  "version": "0.0.0",
+  "description": "Virtual keyboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-/keyboard.git"
+  },
+  "keywords": [
+    "keyboard",
+    "virtual",
+    "simulated",
+    "capslock",
+    "numlock",
+    "key",
+    "code"
+  ],
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/keyboard/issues"
+  },
+  "homepage": "https://github.com/j-/keyboard#readme"
+}
