@@ -38,6 +38,7 @@ export default class TestArea extends Component {
 			<textarea
 				ref="element"
 				className={ testArea }
+				placeholder="Type here to test"
 				onKeyDown={ this.handleKeyDown }
 				onKeyPress={ this.handleKeyPress }
 				onKeyUp={ this.handleKeyUp }
