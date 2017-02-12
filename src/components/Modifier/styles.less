@@ -1,0 +1,19 @@
+.modifier {
+	display: inline-block;
+	padding: 0.25em;
+}
+
+.modifierStateUnknown {
+	composes: modifier;
+	opacity: 0.5;
+}
+
+.modifierStateInactive {
+	composes: modifier;
+}
+
+.modifierStateActive {
+	composes: modifier;
+	outline: 2px auto hsl(140, 100%, 40%);
+	background-color: hsl(140, 100%, 80%);
+}
