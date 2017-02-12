@@ -1,5 +1,6 @@
 .eventDetails {
-	display: block;
+	margin: 0;
+	padding: 0;
 }
 
 .eventDetailsCommon {
@@ -20,10 +21,4 @@
 	composes: eventDetailsCommon;
 	width: 10em;
 	clear: right;
-
-	&::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
 }

@@ -19,7 +19,7 @@ const App = () => (
 
 		<h2>Latest Events</h2>
 		<TestArea />
-		<p>Observe the order and details of each keyboard event captured by the window. Shows the six latest keyboard events with the most recent at the top.</p>
+		<p>Observe the order and details of each keyboard event captured by the window. Shows the nine latest keyboard events with the most recent at the top.</p>
 		<EventDetailsList />
 	</div>
 );

@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import EventDetails from '../EventDetails';
 
+import {
+	container,
+	eventDetailsListItem,
+} from './styles';
+
 export default class EventDetailsList extends Component {
 	constructor (props) {
 		super(props);
@@ -31,6 +36,9 @@ export default class EventDetailsList extends Component {
 			type: e.type,
 			key: e.key,
 			location: e.location,
+			code: e.code,
+			keyCode: e.keyCode,
+			repeat: e.repeat,
 		};
 		// Get the previous state so we can modify it
 		this.setState((state) => {
@@ -59,18 +67,23 @@ export default class EventDetailsList extends Component {
 	render () {
 		const { events } = this.state;
 		const children = events.map((event, i) => (
-			<li key={ i }>
+			<li key={ i } className={ eventDetailsListItem }>
 				<EventDetails
-					eventType={ event.type }
+					eventCode={ event.code }
 					eventKey={ event.key }
+					eventKeyCode={ event.keyCode }
 					eventLocation={ event.location }
+					eventRepeat={ event.repeat }
+					eventType={ event.type }
 				/>
 			</li>
 		));
 		return (
-			<ul>
-				{ children }
-			</ul>
+			<div className={ container }>
+				<ul>
+					{ children }
+				</ul>
+			</div>
 		);
 	}
 }
