@@ -1,6 +1,7 @@
 import React from 'react';
 import ModifierList from '../ModifierList';
 import EventLightList from '../EventLightList';
+import EventDetailsList from '../EventDetailsList';
 import TestArea from '../TestArea';
 
 const App = () => (
@@ -15,6 +16,11 @@ const App = () => (
 		<TestArea />
 		<p>Event listeners on the window object show when these events are fired. Each light will flash green for 100ms after it has been pressed. It will then turn grey and fade out. You may notice that not all keys trigger a keypress event.</p>
 		<EventLightList />
+
+		<h2>Latest Events</h2>
+		<TestArea />
+		<p>Observe the order and details of each keyboard event captured by the window. Shows the six latest keyboard events with the most recent at the top.</p>
+		<EventDetailsList />
 	</div>
 );
 

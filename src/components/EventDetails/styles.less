@@ -1,0 +1,29 @@
+.eventDetails {
+	display: block;
+}
+
+.eventDetailsCommon {
+	display: inline-block;
+	font-family: monospace;
+	margin: 0;
+	padding: 0.25em;
+}
+
+.eventDetailsKey {
+	composes: eventDetailsCommon;
+	font-weight: bold;
+	width: 5em;
+	clear: left;
+}
+
+.eventDetailsValue {
+	composes: eventDetailsCommon;
+	width: 10em;
+	clear: right;
+
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
