@@ -1,0 +1,33 @@
+.light {
+	display: inline-block;
+	padding: 0.25em;
+}
+
+.active {
+	animation: fade 1s;
+	outline-color: transparent;
+	outline-width: 5px;
+	outline-style: auto;
+}
+
+@keyframes fade {
+	0% {
+		outline-color: hsl(140, 100%, 40%);
+		background-color: hsl(140, 100%, 80%);
+	}
+
+	10% {
+		outline-color: hsl(140, 100%, 40%);
+		background-color: hsl(140, 100%, 80%);
+	}
+
+	10% {
+		outline-color: hsl(0, 0%, 60%);
+		background-color: hsl(0, 0%, 90%);
+	}
+
+	100% {
+		outline-color: hsla(0, 0%, 60%, 0);
+		background-color: hsla(0, 0%, 90%, 0);
+	}
+}
