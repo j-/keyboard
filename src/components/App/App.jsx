@@ -1,6 +1,7 @@
 import React from 'react';
 import ModifierList from '../ModifierList';
 import EventLightList from '../EventLightList';
+import TestArea from '../TestArea';
 
 const App = () => (
 	<div>
@@ -11,6 +12,7 @@ const App = () => (
 		<ModifierList />
 
 		<h2>Triggered Events</h2>
+		<TestArea />
 		<p>Event listeners on the window object show when these events are fired. Each light will flash green for 100ms after it has been pressed. It will then turn grey and fade out. You may notice that not all keys trigger a keypress event.</p>
 		<EventLightList />
 	</div>
