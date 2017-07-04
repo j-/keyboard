@@ -10,11 +10,11 @@ export default class Modifier extends Component {
 			known: false,
 			active: false,
 		};
-		this.handleKeyboardEvent = this.handleKeyboardEvent.bind(this);
+		this.handleModifierEvent = this.handleModifierEvent.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
 	}
 
-	handleKeyboardEvent (e) {
+	handleModifierEvent (e) {
 		this.setState({
 			known: true,
 			active: e.getModifierState(this.props.name),
@@ -29,14 +29,16 @@ export default class Modifier extends Component {
 	}
 
 	componentDidMount () {
-		window.addEventListener('keydown', this.handleKeyboardEvent);
-		window.addEventListener('keyup', this.handleKeyboardEvent);
+		window.addEventListener('mousedown', this.handleModifierEvent);
+		window.addEventListener('keydown', this.handleModifierEvent);
+		window.addEventListener('keyup', this.handleModifierEvent);
 		window.addEventListener('blur', this.handleBlur);
 	}
 
 	componentWillUnmount () {
-		window.removeEventListener('keydown', this.handleKeyboardEvent);
-		window.removeEventListener('keyup', this.handleKeyboardEvent);
+		window.removeEventListener('mousedown', this.handleModifierEvent);
+		window.removeEventListener('keydown', this.handleModifierEvent);
+		window.removeEventListener('keyup', this.handleModifierEvent);
 		window.removeEventListener('blur', this.handleBlur);
 	}
 
