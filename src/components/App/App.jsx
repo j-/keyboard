@@ -14,7 +14,9 @@ const PageActiveModifiers = () => (
 	<div>
 		<h2>Active Modifiers</h2>
 		<TestArea />
-		<p>Determined using <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState" title="'KeyboardEvent.getModifierState()' on MDN"><code>KeyboardEvent.getModifierState()</code></a>. Press any key to determine the state of all modifiers. When the page loses focus the state of each modifier key is invalidated.</p>
+		<p>Determined using <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState" title="'KeyboardEvent.getModifierState()' on MDN"><code>KeyboardEvent.getModifierState()</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState" title="'MouseEvent.getModifierState()' on MDN"><code>MouseEvent.getModifierState()</code></a>.</p>
+		<p>Click on the page or press any key to determine the state of all modifier keys. When the page loses focus the state of each modifier key is invalidated.</p>
+		<p>See <a href="https://www.w3.org/TR/uievents-key/#keys-modifier" title="'UI Events KeyboardEvent key Values' on W3C">Modifier Keys on W3C</a> for a description of each modifier key.</p>
 		<ModifierList />
 	</div>
 );
