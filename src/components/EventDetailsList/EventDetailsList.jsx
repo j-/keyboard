@@ -43,8 +43,6 @@ export default class EventDetailsList extends Component {
 		// Get the previous state so we can modify it
 		this.setState((state) => {
 			return {
-				// Copy the existing state
-				...state,
 				// Unshift the new event and
 				// pop the oldest event.
 				events: [clone, ...state.events].slice(0, eventCount),
