@@ -6,6 +6,7 @@ const HTMLPlugin = require('html-webpack-plugin');
 const resolve = (relative) => path.resolve(__dirname, relative);
 
 module.exports = {
+	mode: process.env.NODE_ENV || 'development',
 	entry: resolve('./src/index.jsx'),
 	output: {
 		path: resolve('./dist'),
@@ -17,14 +18,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				use: 'babel-loader',
+				loader: 'awesome-typescript-loader',
 				include: [
 					resolve('./src'),
 				],
 				test: /\.jsx?$/,
 			},
 			{
-				use: [
+				loader: [
 					'style-loader',
 					'css-loader?modules',
 					'less-loader',
@@ -35,7 +36,7 @@ module.exports = {
 				test: /\.(css|less)?$/,
 			},
 			{
-				use: [
+				loader: [
 					'style-loader',
 					'css-loader',
 					'less-loader',
